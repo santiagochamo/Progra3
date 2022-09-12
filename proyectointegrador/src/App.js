@@ -2,7 +2,7 @@ import React from 'react'
 import {Route, Switch} from 'react-router-dom'
 import Home from './Screens/Home/Home'
 import About from './Screens/About/About'
-import Details from './Screens/Details/Details'
+import Details from './Screens/DetailMovies/DetailMovies'
 import NotFound from './Screens/NotFound/NotFound'
 import Header from './components/Header/Header'
 
