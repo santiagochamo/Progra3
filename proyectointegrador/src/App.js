@@ -1,22 +1,36 @@
 import React from 'react'
 import {Route, Switch} from 'react-router-dom'
 import Home from './Screens/Home/Home'
-import About from './Screens/About/About'
-import Details from './Screens/DetailMovies/DetailMovies'
+import AllMovies from './Screens/AllMovies/AllMovies'
+import AllSeries from './Screens/AllSeries/AllSeries'
+import DetailMovies from './Screens/DetailMovies/DetailMovies'
+import DetailSeries from './Screens/DetailSeries/DetailSeries'
 import NotFound from './Screens/NotFound/NotFound'
 import Header from './components/Header/Header'
+import Footer from './components/Footer'
+import Favorites from './Screens/Favorites/Favorites'
+
 
 function App() {
+  
+
   return (
-    <div>
+    <React.Fragment>
+      
       <Header />
       <Switch>
         <Route path='/' exact={true} component={Home} />
-        <Route path='/about' component={About} />
-        <Route path='/details/:id' component={Details} />
-        <Route path='' component={NotFound} />
-      </Switch>
-    </div>
+        <Route path= "/AllMovies" component={AllMovies}/>
+        <Route path= "/AllSeries" component={AllSeries}/>
+        <Route path= "/DetailMovies/:id" component={DetailMovies}/>
+        <Route path= "/DetailSeries/:id" component={DetailSeries}/>
+        <Route path= "/Favorites" component={Favorites} />
+        <Route path= "" component={NotFound} />
+
+      </Switch> 
+     
+     <Footer/>
+    </React.Fragment>
   );
 }
 
