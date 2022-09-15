@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom"
 import AllMovies from "../AllMovies/AllMovies";
 import AllSeries from "../AllSeries/AllSeries";
-import MooviesCard from "../MoviesCard/MooviesCard;
+import MooviesCard from "../MoviesCard/MooviesCard";
 import SeriesCard from "../AllSeries/AllSeries"
 
 class Home extends Component {
