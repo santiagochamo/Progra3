@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom"
 import AllMovies from "./AllMovies/AllMovies";
 import AllSeries from "../AllSeries/AllSeries";
 import MooviesCard from "../MoviesCard/MooviesCard";
@@ -19,18 +18,30 @@ class Home extends Component {
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${Moovie}`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
-            this.setState({
-            data: data.results,
+            if(data.results.length > 0){
+                console.log(data)
+                this.setState({
+                infoMoovies: data.results,
+                infoMooviesEmpty: false
 
-        })})
-        .catch(error => console.log(error))
+                })
+            }
+         })
+        .catch(error =>{
+            this.setState({
+                infoMooviesEmpty: true
+            })
+        })
+            
+       
             
         }else{
-            <p>Resultado de busqueda inexistente</p>
-        }
-        
+            this.setState({
+                infoMoovies:[]
+            })
+        }   
     }
+
    render (){
     return (
         <>
