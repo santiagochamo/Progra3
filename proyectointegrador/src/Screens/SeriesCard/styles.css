@@ -1,0 +1,43 @@
+.seriesCard{
+    margin: 20px 20px;
+    width: 20%;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.mostrar{
+    display: block;
+    text-align: center;
+    justify-content: center;
+    color: beige;
+    background-color:aqua;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.ocultar{
+    display: none;
+}
+
+.botones button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.serieDetail{
+    text-decoration: none;
+    color:beige;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color:aqua;
+}
+
+.seriesCardButton{
+    background-color:aqua;
+    border: none;
+    color:beige;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+}
