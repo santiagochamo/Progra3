@@ -65,11 +65,11 @@ class MooviesCard extends Component {
         <article className="polaroid">
             <img className="imagen" src={`https://image.tmdb.org/t/p/w342/${this.props.image}`} alt="" /> 
             <div className="textopolaroid">
-              <p className="textopolaroidtitulo"> <Link to={`/detalle/${this.props.id}`}> {this.props.name}</Link></p>
+              <p className="textopolaroidtitulo"> <Link to={`/DetailMovies/${this.props.id}`}> {this.props.name}</Link></p>
              
               <p className={this.state.verMas}>{this.props.descripcion}</p> 
               {
-                this.state.Favorites ? <button onClick={() => this.removeFavorites(this.props.id)}> Sacar de Favoritos</button>: <button onClick={() => this.agregarFavorites(this.props.id)} > Agregar a Favoritos</button> 
+                this.state.Favorites ? <button onClick={() => this.removeFavoritos(this.props.id)}> Sacar de Favoritos</button>: <button onClick={() => this.agregarFavorites(this.props.id)} > Agregar a Favoritos</button> 
               }
               
               <button onClick={() => this.verMas()}>Ver más</button>
