@@ -1,49 +1,46 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
+import {Link} from "react-router-dom"
+import SeriesFavorites from '../../components/SeriesFavorites/SeriesFavorites';
 import MoviesFavorites from '../../components/MoviesFavorites/MoviesFavorites';
-import SeriesFavorites from '../../components/SeriesFavorites/SeriesFavorites'
+import './styles.css'
 
-class Favoritos extends Component {
-    constructor(){
-        super();
-        this.state = {
-            movies : [] //necesitamos un array de objetos literales con cada personaje 
-        }
-    }
-    //vamos a tener que hacer un map que vaya recorriendo las movies 
-    componentDidMount(){
-        let favs = [];
-        let recuperoStorage = localStorage.getItem('favoritos')
-
-        if(recuperoStorage !== null){
-            //lo que tenemos en favs es un array de ids 
-            favs = JSON.parse(recuperoStorage)
-            let movies = [];
-            //tendriamos que pasarselo a favoritos en el que vamos a tener que recorrer el array y perdirle al endpoint por los datos de cada movie
-            favs.forEach(id => {
-                //pedir por cada id los datos del personaje --> fetch
-                let url = `https://api.themoviedb.org/3/movie/${id}?api_key=b8041f10f73b7178ac9637ccbb409920`
-                fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    movies.push(data)
-                    this.setState({
-                        movies : movies
-                    })
-                })
-                .catch(e => console.log(e))
-            })
-        }
+class Favoritos extends Component{
+    
+     render(){
+        return(
+            <>
+            <div className="palabra">
+                <h3>TUS PELÍCULAS FAVORITAS</h3>
+            </div>
+            <section className="card-container">
+            <MoviesFavorites />
+            </section>
+            <div className="palabra">
+            <h3>TUS SERIES FAVORITAS</h3>
+        </div>
+        <section className="card-container">
+        <SeriesFavorites />
+      </section>
+         </>
+         
+            /* <div>
+              <div className="palabra">
+               <h3>Tus Peliculas Favoritas</h3>
+               
+               <FavoritosPeliculas />
+                </div>
+                
+                    <div className="palabra">
+               <h3>Tus Series Favoritas</h3>
+               <FavoritosSeries />
+                </div>
+            </div> */
+        )
+  
         
     }
-    render(){
-        return(
-            <React.Fragment>
-                <h2>Mis favoritos</h2>
-                <section className='cardContainer'>
-                
-            </section>
-            </React.Fragment>
-        )
-    }
+
+
 }
+
 export default Favoritos
