@@ -7,7 +7,7 @@ class MooviesCard extends Component {
   constructor(props){
     super(props)
     this.state ={
-      verMas: 'hide',
+      verMas: 'ocultar',
       favoritos: false
 
     }
@@ -15,11 +15,11 @@ class MooviesCard extends Component {
   verMas(){
     if(this.state.verMas === 'show'){
       this.setState({
-        verMas:'hide'
+        verMas:'ocultar'
       })
     } else {
       this.setState({
-        verMas:'show'
+        verMas:'mostrar'
       })
     }
   }
