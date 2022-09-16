@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom"
-import AllMovies from "../AllMovies/AllMovies";
+import AllMovies from "./AllMovies/AllMovies";
 import AllSeries from "../AllSeries/AllSeries";
 import MooviesCard from "../MoviesCard/MooviesCard";
-import SeriesCard from "../AllSeries/AllSeries"
+import Search from "../Search/search"
 
 class Home extends Component {
     constructor(props){
@@ -14,9 +14,9 @@ class Home extends Component {
         }
     }
 
-    funcionPeliculas(pelicula){
-        if (pelicula !== "") {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${pelicula}`)
+    componentDidMount() {
+        if (Moovie !== "") {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${Moovie}`)
         .then(resp => resp.json())
         .then(data => {
             console.log(data)
@@ -24,7 +24,7 @@ class Home extends Component {
             data: data.results,
 
         })})
-        .catch(e => console.log(e))
+        .catch(error => console.log(error))
             
         }else{
             <p>Resultado de busqueda inexistente</p>
@@ -37,7 +37,7 @@ class Home extends Component {
          <Search buscar ={(pelicula) => this.funcionPeliculas(pelicula)}/> 
             {
                 this.state.data.length > 0 ? this.state.data.map((pelicula, idx) => 
-                <PeliculasCard 
+                <MooviesCard
                 key={pelicula + idx} 
                 name={pelicula.title} 
                 image={pelicula.poster_path}
@@ -46,9 +46,9 @@ class Home extends Component {
                 />)  : ""
             }
         
-            <Peliculas />
+            <AllMovies />
            <Link to ={`/AllMovies`}><button className="botton" onClick={()=>this.traerMas()} > Ver Todas las Peliculas</button></Link>
-            <Series />
+            <AllSeries />
            <Link to ={`/AllSeries`}><button className="botton"> Ver Todas las Series</button></Link>
            
             </>
