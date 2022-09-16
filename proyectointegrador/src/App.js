@@ -1,13 +1,13 @@
 import React from 'react'
 import {Route, Switch} from 'react-router-dom'
 import Home from './Screens/Home/Home'
-import AllMovies from './Screens/AllMovies/AllMovies'
-import AllSeries from './Screens/AllSeries/AllSeries'
-import DetailMovies from './Screens/DetailMovies/DetailMovies'
-import DetailSeries from './Screens/DetailSeries/DetailSeries'
+import AllMovies from './components/AllMovies/AllMovies'
+import AllSeries from './components/AllSeries/AllSeries'
+import DetailMovies from './components/DetailMovies/DetailMovies'
+import DetailSeries from './components/DetailSeries/DetailSeries'
 import NotFound from './Screens/NotFound/NotFound'
 import Header from './components/Header/Header'
-import Footer from './components/Footer'
+import Footer from './components/Footer/Footer'
 import Favorites from './Screens/Favorites/Favorites'
 
 

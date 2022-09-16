@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from "react-router-dom"
 import './styles.css'
 
-class MooviesCard extends Component {
+class MoviesCard extends Component {
 
   constructor(props){
     super(props)
@@ -87,4 +87,4 @@ class MooviesCard extends Component {
 }
 
 
-export default MooviesCard
+export default MoviesCard

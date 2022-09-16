@@ -1,5 +1,4 @@
 import React from 'react'
-import './styless.css'
 
 function Footer() {
   return (

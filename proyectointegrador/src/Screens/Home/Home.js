@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import AllMovies from "./AllMovies/AllMovies";
-import AllSeries from "../AllSeries/AllSeries";
-import MooviesCard from "../MoviesCard/MooviesCard";
-import Search from "../Search/search"
+import AllMovies from "../../components/AllMovies/AllMovies";
+import AllSeries from "../../components/AllSeries/AllSeries";
+import MoviesCard from '../..//components/MoviesCard/MoviesCard'
+import Search from "../../components/Search/Search";
 
-class Home extends Component {
+class Movie extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -14,22 +14,22 @@ class Home extends Component {
     }
 
     bringMoovies() {
-        if (Moovie !== "") {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${Moovie}`)
+        if (Movie !== "") {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${Movie}`)
         .then(resp => resp.json())
         .then(data => {
             if(data.results.length > 0){
                 console.log(data)
                 this.setState({
-                infoMoovies: data.results,
-                infoMooviesEmpty: false
+                infoMovies: data.results,
+                infoMoviesEmpty: false
 
                 })
             }
          })
         .catch(error =>{
             this.setState({
-                infoMooviesEmpty: true
+                infoMoviesEmpty: true
             })
         })
             
@@ -37,7 +37,7 @@ class Home extends Component {
             
         }else{
             this.setState({
-                infoMoovies:[]
+                infoMovies:[]
             })
         }   
     }
@@ -45,10 +45,10 @@ class Home extends Component {
    render (){
     return (
         <>
-         <Search buscar ={(pelicula) => this.funcionPeliculas(pelicula)}/> 
+         
             {
                 this.state.data.length > 0 ? this.state.data.map((pelicula, idx) => 
-                <MooviesCard
+                <MoviesCard
                 key={pelicula + idx} 
                 name={pelicula.title} 
                 image={pelicula.poster_path}
@@ -58,9 +58,7 @@ class Home extends Component {
             }
         
             <AllMovies />
-           <Link to ={`/AllMovies`}><button className="botton" onClick={()=>this.traerMas()} > Ver Todas las Peliculas</button></Link>
-            <AllSeries />
-           <Link to ={`/AllSeries`}><button className="botton"> Ver Todas las Series</button></Link>
+           
            
             </>
     )
@@ -69,4 +67,4 @@ class Home extends Component {
     
 
 }
-export default Home
+export default Movie
