@@ -14,7 +14,7 @@ class Home extends Component {
         }
     }
 
-    componentDidMount() {
+    bringMoovies() {
         if (Moovie !== "") {
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${Moovie}`)
         .then(resp => resp.json())
