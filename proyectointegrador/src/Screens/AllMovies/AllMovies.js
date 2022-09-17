@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import {Link} from "react-router-dom"
 import MoviesCard from '../MoviesCard/MoviesCard';
-import Search from '../../components/Search/Search';
+import Search from '../Search/Search';
 
 
 class AllMovies extends Component {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import MoviesCard from '../../components/MoviesCard/MoviesCard'
+import MoviesCard from '../../Screens/MoviesCard/MoviesCard'
 
 
 class Detalle extends Component{

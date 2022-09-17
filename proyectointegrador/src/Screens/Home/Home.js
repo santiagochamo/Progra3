@@ -1,10 +1,11 @@
 import React, {Component} from "react";
-import AllMovies from "../../components/AllMovies/AllMovies";
-import AllSeries from "../../components/AllSeries/AllSeries";
-import MoviesCard from '../..//components/MoviesCard/MoviesCard'
-import Search from "../../components/Search/Search";
+import AllMovies from "../AllMovies/AllMovies";
+import MoviesCard from "../MoviesCard/MoviesCard";
+import AllSeries from "../AllSeries/AllSeries";
+import {Link} from "react-router-dom"
+import Search from "../Search/Search";
 
-class Movie extends Component {
+class Home extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -13,55 +14,46 @@ class Movie extends Component {
         }
     }
 
-    bringMoovies() {
-        if (Movie !== "") {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${Movie}`)
+    buscarPeliculas(nombre){
+        if (nombre !== "") {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${nombre}`)
         .then(resp => resp.json())
         .then(data => {
-            if(data.results.length > 0){
-                console.log(data)
-                this.setState({
-                infoMovies: data.results,
-                infoMoviesEmpty: false
-
-                })
-            }
-         })
-        .catch(error =>{
+            console.log(data)
             this.setState({
-                infoMoviesEmpty: true
-            })
-        })
-            
-       
+            data: data.results,
+
+        })})
+        .catch(e => console.log(e))
             
         }else{
-            this.setState({
-                infoMovies:[]
-            })
-        }   
+            <p>No hay una pelicula con ese nombre</p>
+        }
+        
     }
-
    render (){
     return (
         <>
-         
-           <MoviesCard/>
+         <Search buscar ={(nombre) => this.buscarPeliculas(nombre)}/> 
+            {
+                this.state.data.length > 0 ? this.state.data.map((jose, idx) => 
+                <MoviesCard 
+                key={jose + idx} 
+                name={jose.title} 
+                image={jose.poster_path}
+                descripcion={jose.overview}
+                id = {jose.id}
+                />)  : ""
+            }
         
-           <Search search={(name) => this.search(name)} />
-        {
-          this.state.infoMoviesEmpty ?
-          <h2>No se encontraron resultados</h2>
-          :
-          this.state.infoMovies.length > 0 ?
-          this.state.infoMovies.map(elm => <h2>{elm.name}</h2>)
-          : ''
-        }
-        
-
             <AllMovies />
-          
-           
+            <br></br>
+            <br></br>
+           <Link to ={`/verTodas`}><button className="botton" onClick={()=>this.traerMas()} > Ver Todas las Peliculas</button></Link>
+            <AllSeries />
+            <br></br>
+            <br></br>
+           <Link to ={`/TodasSeries`}><button className="botton"> Ver Todas las Series</button></Link>
            
             </>
     )
@@ -70,4 +62,4 @@ class Movie extends Component {
     
 
 }
-export default Movie
+export default Home
