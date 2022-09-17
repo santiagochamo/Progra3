@@ -14,9 +14,9 @@ class Home extends Component {
         }
     }
 
-    buscarPeliculas(nombre){
-        if (nombre !== "") {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${nombre}`)
+    searchMoovieSerie(name){
+        if (name !== "") {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=0002daaf86f106b6b8226fa0a789628f&query=${name}`)
         .then(resp => resp.json())
         .then(data => {
             console.log(data)
@@ -34,15 +34,14 @@ class Home extends Component {
    render (){
     return (
         <>
-         <Search buscar ={(nombre) => this.buscarPeliculas(nombre)}/> 
             {
-                this.state.data.length > 0 ? this.state.data.map((jose, idx) => 
+                this.state.data.length > 0 ? this.state.data.map((name, idx) => 
                 <MoviesCard 
-                key={jose + idx} 
-                name={jose.title} 
-                image={jose.poster_path}
-                descripcion={jose.overview}
-                id = {jose.id}
+                key={name + idx} 
+                name={name.title} 
+                image={name.poster_path}
+                descripcion={name.overview}
+                id = {name.id}
                 />)  : ""
             }
         
