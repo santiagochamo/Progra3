@@ -46,14 +46,11 @@ class Home extends Component {
                 />)  : ""
             }
         
+            <Link to ={`/AllMovies`}><button className="botton" onClick={()=>this.traerMas()} > Ver Todas las Peliculas</button></Link>
+           <Link to ={`/AllSeries`}><button className="botton"> Ver Todas las Series</button></Link>
             <AllMovies />
-            <br></br>
-            <br></br>
-           <Link to ={`/verTodas`}><button className="botton" onClick={()=>this.traerMas()} > Ver Todas las Peliculas</button></Link>
             <AllSeries />
-            <br></br>
-            <br></br>
-           <Link to ={`/TodasSeries`}><button className="botton"> Ver Todas las Series</button></Link>
+           
            
             </>
     )
