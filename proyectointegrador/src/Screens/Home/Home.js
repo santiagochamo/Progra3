@@ -46,18 +46,21 @@ class Movie extends Component {
     return (
         <>
          
-            {
-                this.state.data.length > 0 ? this.state.data.map((pelicula, idx) => 
-                <MoviesCard
-                key={pelicula + idx} 
-                name={pelicula.title} 
-                image={pelicula.poster_path}
-                descripcion={pelicula.overview}
-                id = {pelicula.id}
-                />)  : ""
-            }
+           <MoviesCard/>
         
+           <Search search={(name) => this.search(name)} />
+        {
+          this.state.infoMoviesEmpty ?
+          <h2>No se encontraron resultados</h2>
+          :
+          this.state.infoMovies.length > 0 ?
+          this.state.infoMovies.map(elm => <h2>{elm.name}</h2>)
+          : ''
+        }
+        
+
             <AllMovies />
+          
            
            
             </>
