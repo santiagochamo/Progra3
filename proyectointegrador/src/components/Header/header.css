@@ -1,0 +1,24 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+.main-nav{
+    background-color: rgb(250, 177, 151);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.textButton{
+    color: rgb(70, 64, 64);
+}
+.textButton:hover{
+    transition: all 1s;
+    color: black;
+}

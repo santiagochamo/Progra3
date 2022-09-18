@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import logo from "../../img/logo.svg"
+import "./header.css"
 
 
 
@@ -9,10 +11,12 @@ function Header (){
         <nav>
             <ul className='main-nav'>
                 <Link to= "/">
-                    <img src='/img/logo.png'  alt= 'logo'/>
+                    <img src={logo} className="logoImg"  alt= 'logo'/>
                 </Link>
-                <Link to= "/"> Home </Link>
-                <Link to=  "/favoritos"> Favoritos </Link>
+
+                <Link to= "/" className='textButton'> Home </Link>
+                <Link to=  "/peliculasFavoritas"  className='textButton'> Peliculas Favoritas </Link>
+                <Link to=  "/seriesFavoritas"  className='textButton'> Series Favoritas </Link>
             </ul>
         </nav>
       )

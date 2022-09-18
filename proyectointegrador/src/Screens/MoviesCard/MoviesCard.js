@@ -3,25 +3,19 @@ import {Link} from "react-router-dom"
 import './styles.css'
 
 class MoviesCard extends Component {
-
   constructor(props){
     super(props)
-    this.state ={
-      verMas: 'ocultar',
+    this.state = {
+      verDetail: false,
       favoritos: false
 
     }
   }
   verMas(){
-    if(this.state.verMas === 'show'){
-      this.setState({
-        verMas:'ocultar'
-      })
-    } else {
-      this.setState({
-        verMas:'mostrar'
-      })
-    }
+    this.setState( {verDetail: true})
+  }
+  verMenos(){
+    this.setState( {verDetail: false})
   }
 
   agregarFavoritos(id){
@@ -52,35 +46,40 @@ class MoviesCard extends Component {
     localStorage.setItem("Favorites", string)
 
     this.setState({
-      favorites: false
+      favoritos: false
     })
   }
 
 
 
+
   render(){
     return (
-    <section className='peliculaspopulares'>
-    <a className="apolaroid">
-        <article className="polaroid">
+      
+    <section className='polaroid'>
+   
+
             <img className="imagen" src={`https://image.tmdb.org/t/p/w342/${this.props.image}`} alt="" /> 
             <div className="textopolaroid">
               <p className="textopolaroidtitulo"> <Link to={`/DetailMovies/${this.props.id}`}> {this.props.name}</Link></p>
              
-              <p className={this.state.verMas}>{this.props.descripcion}</p> 
+              <p className={this.state.verDetail ? "detalle-movie" : "detalle-hide"}>{this.props.descripcion}</p>
               {
-                this.state.Favorites ? <button onClick={() => this.removeFavoritos(this.props.id)}> Sacar de Favoritos</button>: <button onClick={() => this.agregarFavorites(this.props.id)} > Agregar a Favoritos</button> 
+                this.state.favoritos ? 
+                <button onClick={() => this.removeFavorites(this.props.id)}> Sacar de Favoritos</button>
+                : 
+                <button onClick={() => this.agregarFavoritos(this.props.id)} > Agregar a Favoritos</button> 
+              }
+              {
+                !this.state.verDetail ? 
+                <button onClick={ () => this.verMas()}>Ver mas</button>
+                :
+                <button onClick={() => this.verMenos()}>Ver menos</button>
               }
               
-              <button onClick={() => this.verMas()}>Ver más</button>
-
-
-              
+              <button > <Link to={`./DetailMovies/${this.props.id}`}>Ver Detalle</Link></button>
             </div>
-        </article>
-   </a>
-   
-</section>
+      </section>
     )
     
   }

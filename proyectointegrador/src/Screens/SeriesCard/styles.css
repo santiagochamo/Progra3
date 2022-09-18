@@ -1,3 +1,7 @@
+
+.hide-detalle{
+    display: none;
+}
 .seriesCard{
     margin: 20px 20px;
     width: 20%;

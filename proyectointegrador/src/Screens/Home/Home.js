@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import AllMovies from "../AllMovies/AllMovies";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import AllSeries from "../AllSeries/AllSeries";
 import {Link} from "react-router-dom"
-import Search from "../Search/Search";
+import AllPopularSeries from "../AllPopularSeries/AllPopularSeries";
+import AllPopularMovies from "../AllPopularMovies/AllPopularMovies";
+import "./Home.css"
 
 class Home extends Component {
     constructor(props){
@@ -34,22 +34,13 @@ class Home extends Component {
    render (){
     return (
         <>
-            {
-                this.state.data.length > 0 ? this.state.data.map((name, idx) => 
-                <MoviesCard 
-                key={name + idx} 
-                name={name.title} 
-                image={name.poster_path}
-                descripcion={name.overview}
-                id = {name.id}
-                />)  : ""
-            }
-        
-            <Link to ={`/AllMovies`}><button className="botton" onClick={()=>this.traerMas()} > Ver Todas las Peliculas</button></Link>
-           <Link to ={`/AllSeries`}><button className="botton"> Ver Todas las Series</button></Link>
-            <AllMovies />
-            <AllSeries />
-           
+            <div className="watchContainer">
+                <Link to ={`/AllMovies`} className="watchButton"> Ver Todas las Peliculas</Link>
+                <Link to ={`/AllSeries`} className="watchButton">Ver Todas las Series</Link>
+            </div>
+            
+            <AllPopularMovies/>
+            <AllPopularSeries/>
            
             </>
     )

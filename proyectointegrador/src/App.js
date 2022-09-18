@@ -8,12 +8,10 @@ import DetailSeries from './components/DetailSeries/DetailSeries'
 import NotFound from './Screens/NotFound/NotFound'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-import Favorites from './Screens/Favorites/Favorites'
-
+import FavoritesSeries from './Screens/FavoritesSeries/FavoritesSeries'
+import FavoritesMovies from './Screens/FavoritesMovies/FavoritesMovies'
 
 function App() {
-  
-
   return (
     <React.Fragment>
       
@@ -24,7 +22,8 @@ function App() {
         <Route path= "/AllSeries" component={AllSeries}/>
         <Route path= "/DetailMovies/:id" component={DetailMovies}/>
         <Route path= "/DetailSeries/:id" component={DetailSeries}/>
-        <Route path= "/Favorites" component={Favorites} />
+        <Route path="/peliculasFavoritas" component={FavoritesMovies}/>
+        <Route path="/seriesFavoritas" component={FavoritesSeries}/>
         <Route path= "" component={NotFound} />
 
       </Switch> 
