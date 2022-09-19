@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import MoviesCard from "../MoviesCard/MoviesCard";
 import {Link} from "react-router-dom"
 import AllPopularSeries from "../AllPopularSeries/AllPopularSeries";
 import AllPopularMovies from "../AllPopularMovies/AllPopularMovies";
